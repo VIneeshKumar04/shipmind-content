@@ -1,5 +1,5 @@
 {
-  "version": 10,
+  "version": 20,
   "topics": [
     {
       "id": "ecdis",
@@ -208,140 +208,197 @@
       "readTime": 3,
       "content": {
         "quick_look": "The system that physically moves the rudder in response to helm commands from the bridge. On most commercial ships it's hydraulic — hydraulic fluid drives rams or rotary vanes connected directly to the rudder stock.\n\nSOLAS requires two independent power units, regular testing before entering port, and a direct communication system between bridge and steering gear room.\n\n⚠️ Most confusing part: The steering gear doesn't fail dramatically — it often fails gradually. Slow response, unusual noises, or hunting (rudder moving without command) are early warning signs most people ignore until it's too late.",
-        "deep_dive": "Two main types of hydraulic steering gear:\n\n• Ram type — two or four hydraulic rams push the tiller arm connected to the rudder stock. Most common on larger vessels.\n• Rotary vane type — hydraulic fluid acts on vanes inside a rotary actuator. More compact, used on smaller vessels.\n\nKey components:\n• Hydraulic power units (HPU) — pumps that pressurize the system. Minimum two required by SOLAS.\n• Tiller — arm connecting the rams to the rudder stock\n• Rudder stock — the shaft that physically turns the rudder\n• Hunting gear — feedback mechanism that stops the rudder when it reaches the ordered angle\n• Follow-up (FU) mode — rudder moves to and holds ordered angle\n• Non-follow-up (NFU) mode — rudder moves only while control is held, no auto-stop\n• Autopilot mode — rudder controlled automatically by autopilot system\n\nSOLAS requirements:\n• Steering gear test within 12 hours before departure\n• Emergency steering drill every 3 months\n• Direct communication (phone/intercom) between bridge and steering gear room\n• Auxiliary steering gear capable of 7° per second movement\n• Rudder angle indicator on bridge and at steering gear",
+        "deep_dive": "Two main types of hydraulic steering gear:\n\n• Ram type — two or four hydraulic rams push the tiller arm connected to the rudder stock. Most common on larger vessels.\n• Rotary vane type — hydraulic fluid acts on vanes inside a rotary actuator. More compact, used on smaller vessels.\n\nKey components:\n• Hydraulic power units (HPU) — pumps that pressurize the system. Minimum two required by SOLAS.\n• Tiller — arm connecting the rams to the rudder stock\n• Rudder stock — the shaft that physically turns the rudder\n• Hunting gear — feedback mechanism that stops the rudder when it reaches the ordered angle\n• Follow-up (FU) mode — rudder moves to and holds ordered angle\n• Non-follow-up (NFU) mode — rudder moves only while control is held, no auto-stop\n• Autopilot mode — rudder controlled automatically by autopilot system\n\nSOLAS requirements:\n• Steering gear test within 12 hours before departure\n• Emergency steering drill every 3 months\n• Direct communication between bridge and steering gear room\n• Auxiliary steering gear capable of 7° per second movement\n• Rudder angle indicator on bridge and at steering gear",
         "on_watch": "🚨 STEERING GEAR ISSUE RIGHT NOW?\n\n1. No helm response → switch to second hydraulic power unit immediately\n2. Still no response → switch to NFU (Non-Follow-Up) control\n3. NFU not working → switch to emergency local steering in steering gear room, inform Master\n4. Rudder hunting (moving on its own) → disengage autopilot, switch to manual FU\n5. Hydraulic fluid leak → inform Chief Engineer, reduce speed, prepare for emergency\n6. Loss of steering in confined waters → anchoring may be required, sound appropriate signals\n\nEmergency steering position: _____ (know this before you need it)\nSteering gear room phone number: _____"
       }
     },
-    [
-  {
-    "id": "gyrocompass",
-    "title": "Gyrocompass",
-    "subtitle": "Gyroscopic North-Seeking Compass",
-    "category": "navigation",
-    "roles": ["deck_cadet", "oow", "chief_officer", "captain"],
-    "readTime": 3,
-    "content": {
-      "quick_look": "A spinning gyroscope that finds true north — not magnetic north. Unlike a magnetic compass, it's unaffected by the ship's steel hull or electrical equipment.\n\nIt feeds heading data to ECDIS, autopilot, radar, and AIS. Every one of those systems is only as accurate as the gyrocompass.\n\n⚠️ Most confusing part: Gyrocompass error. It's never perfectly zero. Every ship has a known gyro error — and if nobody corrects for it, your ECDIS shows you heading the wrong way. Check the error board before you trust the heading.",
-      "deep_dive": "A gyrocompass works on two physical principles: gyroscopic inertia (a spinning mass resists change) and precession (gravity acts on the tilt to align the spin axis to true north).\n\nKey components:\n• Gyro sphere — spinning rotor, typically at 6000–24000 RPM\n• Binnacle/master compass — houses the gyro and electronics\n• Repeaters — slave units showing heading at various bridge positions\n• Follow-up system — transmits heading signal to connected equipment\n\nSettling time after power-on: 1–4 hours. Never use gyro data immediately after startup.\n\nGyro error types:\n• Speed error — caused by vessel's own speed, increases in high latitudes\n• Latitude error — gyro is less accurate near the poles\n• Rolling error — caused by heavy rolling in seaways\n\nAlways compare gyro heading to magnetic compass heading. Difference = gyro error ± variation ± deviation.",
-      "on_watch": "🚨 GYROCOMPASS ISSUE RIGHT NOW?\n\n1. Gyro error suddenly changed → do NOT trust heading, compare to magnetic compass immediately\n2. Gyro alarm → check if master compass is still running, report to Master\n3. Total gyro failure → switch all systems to magnetic compass, reduce speed, inform Master\n4. Large discrepancy between gyro repeaters → master compass may be hunting, check directly\n5. After blackout recovery → gyro needs resettling time, do not trust for 1–4 hours\n\nKnown gyro error: _____ °\nMagnetic compass location: _____"
+    {
+      "id": "gyrocompass",
+      "title": "Gyrocompass",
+      "subtitle": "Gyroscopic North-Seeking Compass",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "A spinning gyroscope that finds true north — not magnetic north. Unlike a magnetic compass, it's unaffected by the ship's steel hull or electrical equipment.\n\nIt feeds heading data to ECDIS, autopilot, radar, and AIS. Every one of those systems is only as accurate as the gyrocompass.\n\n⚠️ Most confusing part: Gyrocompass error. It's never perfectly zero. Every ship has a known gyro error — and if nobody corrects for it, your ECDIS shows you heading the wrong way. Check the error board before you trust the heading.",
+        "deep_dive": "A gyrocompass works on two physical principles: gyroscopic inertia (a spinning mass resists change) and precession (gravity acts on the tilt to align the spin axis to true north).\n\nKey components:\n• Gyro sphere — spinning rotor, typically at 6000–24000 RPM\n• Binnacle/master compass — houses the gyro and electronics\n• Repeaters — slave units showing heading at various bridge positions\n• Follow-up system — transmits heading signal to connected equipment\n\nSettling time after power-on: 1–4 hours. Never use gyro data immediately after startup.\n\nGyro error types:\n• Speed error — caused by vessel's own speed, increases in high latitudes\n• Latitude error — gyro is less accurate near the poles\n• Rolling error — caused by heavy rolling in seaways\n\nAlways compare gyro heading to magnetic compass heading. Difference = gyro error ± variation ± deviation.",
+        "on_watch": "🚨 GYROCOMPASS ISSUE RIGHT NOW?\n\n1. Gyro error suddenly changed → do NOT trust heading, compare to magnetic compass immediately\n2. Gyro alarm → check if master compass is still running, report to Master\n3. Total gyro failure → switch all systems to magnetic compass, reduce speed, inform Master\n4. Large discrepancy between gyro repeaters → master compass may be hunting, check directly\n5. After blackout recovery → gyro needs resettling time, do not trust for 1–4 hours\n\nKnown gyro error: _____ °\nMagnetic compass location: _____"
+      }
+    },
+    {
+      "id": "autopilot",
+      "title": "Autopilot",
+      "subtitle": "Automatic Steering System",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "An electronic system that automatically steers the ship on a set course by continuously adjusting the rudder — so the officer of the watch isn't manually steering for hours at sea.\n\nIt takes heading input from the gyrocompass and rudder feedback from the steering gear to hold the course.\n\n⚠️ Most confusing part: Autopilot is not a watchkeeper. COLREGS still require a proper lookout. Ships have struck objects while on autopilot because the officer assumed the system was handling everything. It's steering — not thinking.",
+        "deep_dive": "Autopilot modes:\n• Heading control — maintains a fixed compass course\n• Track control — follows a route programmed in ECDIS\n• Auto/adaptive — adjusts sensitivity to sea conditions automatically\n\nKey settings:\n• Weather/rudder gain — how aggressively the rudder corrects\n• Counter rudder — anticipatory correction before overshoot\n• Yaw — acceptable deviation band before rudder activates\n\nHigh gain = frequent small corrections (calm weather)\nLow gain = fewer large corrections (rough weather, saves rudder wear)\n\nHandover protocol:\n• Disengage autopilot before entering TSS, port approaches, or restricted visibility\n• Officer must be at helm before disengaging\n• Check steering mode matches conditions before every watch",
+        "on_watch": "🚨 AUTOPILOT ISSUE RIGHT NOW?\n\n1. Ship not holding course → check gain settings, sea conditions may need adjustment\n2. Large course deviation alarm → take manual control immediately\n3. Autopilot disengaged unexpectedly → take helm manually, check system fault\n4. Track control deviation → verify ECDIS route is correct, switch to heading control\n5. Approaching confined water → disengage to manual steering well in advance\n\nMinimum advance notice before manual takeover: _____ minutes\nWhen to switch to hand steering: _____"
+      }
+    },
+    {
+      "id": "echo_sounder",
+      "title": "Echo Sounder",
+      "subtitle": "Depth Measurement System",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 2,
+      "content": {
+        "quick_look": "Measures water depth by sending an acoustic pulse downward and timing the echo from the seabed. Displayed as depth below keel or depth below transducer.\n\nCritical in shallow water, port approaches, and anchoring operations.\n\n⚠️ Most confusing part: Depth below transducer vs. depth below keel. The transducer is not at the keel — it's mounted higher. If you read 5m on the display and your draught is 6m, you're already aground. Always confirm which measurement the display is showing.",
+        "deep_dive": "How it works: Transducer mounted on the hull sends a 200 kHz (shallow) or 50 kHz (deep) pulse. Sound travels at ~1500 m/s in seawater. Return time ÷ 2 = distance to seabed.\n\nKey settings:\n• Draft offset — set correctly so display shows clearance under keel\n• Range — auto or manual, adjust for shallow/deep water\n• Alarm depth — triggers when depth drops below threshold\n\nFactors affecting accuracy:\n• Water temperature and salinity (changes sound speed)\n• Aeration and bubbles under hull (causes false shallow readings)\n• Rocky seabeds return strong echoes; mud returns weak ones\n\nDual frequency: 200 kHz for shallow/accurate, 50 kHz for deep water penetration.",
+        "on_watch": "🚨 ECHO SOUNDER ISSUE RIGHT NOW?\n\n1. Shallow alarm → verify against chart depth, check draft, inform Master\n2. No depth reading → check transducer for air bubbles, try alternate frequency\n3. Erratic readings → vessel speed causing aeration, reduce speed\n4. Depth shallowing rapidly → emergency stations, reduce speed immediately\n5. Anchoring → monitor continuously, note holding ground type from chart\n\nSafe under-keel clearance: _____ m\nDraft offset setting: _____ m"
+      }
+    },
+    {
+      "id": "speed_log",
+      "title": "Speed Log",
+      "subtitle": "Ship Speed and Distance Measurement",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 2,
+      "content": {
+        "quick_look": "Measures the ship's speed and distance travelled. Most modern ships use an electromagnetic or Doppler log. Speed data feeds into ECDIS for dead reckoning when GPS is unavailable.\n\n⚠️ Most confusing part: Speed through water vs. speed over ground. The log measures speed through water — it doesn't account for current. A 2-knot current against you means your SOG is 2 knots less than your log speed. Dead reckoning using log speed alone in strong currents will put you in the wrong position.",
+        "deep_dive": "Types of speed logs:\n• Electromagnetic log — probe extends below the keel, detects water flow. Accurate in shallow and deep water.\n• Doppler log — sends acoustic beams to seabed or water layer. Gives speed over ground (bottom-track) or speed through water (water-track).\n• GPS-derived SOG — not a true log, used as reference.\n\nKey outputs:\n• STW — Speed Through Water (log speed)\n• SOG — Speed Over Ground (GPS)\n• Distance log — cumulative nautical miles for voyage records\n\nLog error: Biofouling on the sensor probe causes underreading. Clean regularly in dry dock.",
+        "on_watch": "🚨 SPEED LOG ISSUE RIGHT NOW?\n\n1. Log reading zero → check probe is extended, check for fouling\n2. Log and GPS SOG differ significantly → check for current or tidal stream\n3. Log failure at sea → use GPS SOG for navigation, note in logbook\n4. Dead reckoning needed (GPS failure) → use last known log speed and heading\n5. Entering shallow water → switch to Doppler bottom-track if available\n\nLog type on this ship: _____\nKnown log error: _____ %"
+      }
+    },
+    {
+      "id": "vhf_radio",
+      "title": "VHF Radio",
+      "subtitle": "Very High Frequency Marine Radio",
+      "category": "communication",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain",
+        "rating"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "The primary voice communication tool on the bridge. Used for ship-to-ship, ship-to-shore, and port communications. Range is roughly line-of-sight — 20 to 50 nautical miles depending on antenna height.\n\nChannel 16 is the international distress, safety, and calling channel. It must be monitored at all times when at sea.\n\n⚠️ Most confusing part: Channel discipline. Pilots, port control, and other ships all use different working channels. New officers call on the wrong channel or forget to switch back to Ch16 after a working channel conversation. Always return to Ch16.",
+        "deep_dive": "Key VHF channels:\n• Ch16 — distress, safety, calling (always monitored)\n• Ch13 — bridge-to-bridge navigation safety\n• Ch70 — DSC digital only, no voice\n• Ch12, 14 — port operations (varies by port)\n• Ch06 — intership working channel\n\nDSC (Ch70) sends automated digital alerts including your MMSI, position, and distress type — without speaking.\n\nOutput power:\n• High (25W) — ship-to-shore\n• Low (1W) — short-range intership\n\nRadio checks must be done at start of every watch and logged.",
+        "on_watch": "🚨 VHF ISSUE RIGHT NOW?\n\n1. No response on Ch16 → check squelch, check antenna, try handheld\n2. Hearing distress call on Ch16 → listen, do not transmit unless you can assist, log it\n3. Missed pilot call → try Ch16 then agreed working channel\n4. Need to make distress call → 'MAYDAY MAYDAY MAYDAY, this is [name] [MMSI] [position] [situation] [POB], OVER'\n5. Radio completely dead → use GMDSS handheld VHF from emergency equipment\n\nPilot channel for this port: _____\nPort control channel: _____"
+      }
+    },
+    {
+      "id": "oily_water_separator",
+      "title": "Oily Water Separator",
+      "subtitle": "Bilge Water Treatment System",
+      "category": "engine",
+      "roles": [
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer",
+        "oow",
+        "chief_officer"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "Separates oil from bilge water so only clean water (below 15 ppm oil content) is discharged overboard. Required by MARPOL Annex I.\n\nEvery discharge must be logged in the Oil Record Book with position, volume, and OWS reading.\n\n⚠️ Most confusing part: The magic pipe. Some crews bypass the OWS by discharging oily bilge directly overboard. This is a criminal offence. Port state control uses fluorescence testing and Oil Record Book audits to detect it. Officers have gone to prison for this.",
+        "deep_dive": "How it works (two-stage):\n\nStage 1 — Gravity separation: Oil rises because it's less dense than water. Large droplets separate in the coalescer chamber.\n\nStage 2 — Fine separation: Remaining emulsified oil passes through coalescing filter media.\n\n15 ppm bilge alarm: Optical sensor monitors the output. If oil content exceeds 15 ppm, the overboard valve closes automatically.\n\nMARPOL requirements:\n• Discharge only when underway, >12nm from nearest land\n• Oil content <15 ppm confirmed by approved monitoring equipment\n• All operations logged in Oil Record Book Part I\n• No discharge in special areas (Baltic, Mediterranean, etc.)\n\nSludge from OWS must be incinerated or landed ashore.",
+        "on_watch": "🚨 OWS ISSUE RIGHT NOW?\n\n1. 15ppm alarm → overboard valve should auto-close, verify it did\n2. OWS not reaching 15ppm → check filter element condition, replace if needed\n3. Entering special area with full bilge → do NOT discharge, transfer to slop tank\n4. Port inspection of Oil Record Book → every entry must match bilge pump logs\n5. OWS bypassed by previous crew → report to Master and Chief Engineer immediately\n\nSlop tank capacity: _____ m³\nOil Record Book location: _____"
+      }
+    },
+    {
+      "id": "marine_boiler",
+      "title": "Marine Boiler",
+      "subtitle": "Steam Generation System",
+      "category": "engine",
+      "roles": [
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "Generates steam used for heating fuel oil, cargo, accommodation, and sometimes driving turbines. On tankers especially, the boiler is critical — heavy crude cargo must be heated to flow.\n\n⚠️ Most confusing part: Low water level is a boiler emergency, not just an alarm. If the heating element or furnace is exposed without water, it overheats and can rupture. A boiler explosion is one of the most catastrophic events in the engine room.",
+        "deep_dive": "Types of marine boilers:\n• Auxiliary boiler — oil-fired, used for steam services\n• Exhaust gas boiler/economiser — uses heat from main engine exhaust. Free steam when main engine is running.\n• Composite boiler — both oil-fired and exhaust gas, automatically switches\n\nKey components:\n• Burner — atomises fuel oil and ignites it\n• Furnace — combustion chamber\n• Steam drum — collects and stores steam\n• Safety valves — lift automatically if pressure exceeds maximum\n• Gauge glass — direct visual water level indicator\n\nAlarm hierarchy:\n• Low water level warning → check feedwater pump\n• Low-low water level → automatic burner shutdown\n• High pressure → safety valve lifts automatically\n\nBoiler water treatment: Chemical dosing prevents scale and corrosion. Test daily.",
+        "on_watch": "🚨 BOILER ALARM RIGHT NOW?\n\n1. Low water level alarm → check gauge glass directly, do NOT trust display alone\n2. Feedwater pump failure → start standby pump immediately\n3. Low-low level (burner shutdown) → do NOT relight until water level is confirmed normal\n4. Safety valve lifting → steam pressure too high, reduce firing rate\n5. Flame failure alarm → check fuel supply, purge and relight following procedure\n6. Unusual noise → inform Chief Engineer, reduce firing rate\n\nNormal working pressure: _____ bar\nSafety valve lift pressure: _____ bar"
+      }
+    },
+    {
+      "id": "sewage_treatment",
+      "title": "Sewage Treatment Plant",
+      "subtitle": "Marine Sewage Treatment System",
+      "category": "environment",
+      "roles": [
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer",
+        "oow",
+        "chief_officer"
+      ],
+      "readTime": 2,
+      "content": {
+        "quick_look": "Treats sewage onboard so it can be legally discharged without polluting the sea. Required under MARPOL Annex IV.\n\nDischarge of untreated sewage within 3nm of land is prohibited.\n\n⚠️ Most confusing part: Many seafarers assume sewage doesn't matter compared to oil. PSC inspectors disagree — and the Sewage Record Book gets checked. Missing entries are an instant deficiency.",
+        "deep_dive": "Most common type: Biological treatment plant (activated sludge process)\n\nThree stages:\n1. Aeration chamber — bacteria break down organic waste using dissolved oxygen\n2. Settlement chamber — treated solids settle out\n3. Chlorination/disinfection — chlorine or UV kill remaining bacteria before discharge\n\nKey parameters:\n• Dissolved oxygen in aeration tank — bacteria need air to live\n• Chlorine residual in discharge — must be within limits\n• Sludge level — excess sludge must be removed\n\nDischarge standards (MARPOL Annex IV):\n• Coliform bacteria < 250 cfu/100ml\n• Suspended solids < 35 mg/L\n• BOD5 < 25 mg/L\n\nSpecial areas (Baltic Sea): Zero sewage discharge unless plant has special certification.",
+        "on_watch": "🚨 SEWAGE PLANT ISSUE RIGHT NOW?\n\n1. Alarm on panel → check which stage is faulting, refer to manual\n2. Overboard discharge in restricted area → stop discharge immediately, hold in tank\n3. Foul smell from plant room → check aeration blower, bacteria may be dying\n4. Entering Baltic or special area → switch to holding tank mode\n5. PSC inspection → Sewage Record Book must show all discharge positions logged\n\nHolding tank capacity: _____ m³\nSewage Record Book location: _____"
+      }
+    },
+    {
+      "id": "fire_detection",
+      "title": "Fire Detection System",
+      "subtitle": "Fixed Fire Detection and Alarm System",
+      "category": "safety",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain",
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer",
+        "eto",
+        "rating"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "A network of detectors throughout the ship that identifies fire automatically and triggers an alarm at the central control panel — usually on the bridge or fire control station.\n\nSOLAS requires fixed fire detection on all passenger ships and most cargo ships above 500 GT.\n\n⚠️ Most confusing part: A zone alarm doesn't tell you exactly where the fire is — it tells you which zone. Each zone covers multiple compartments. You still have to physically investigate every space in that zone. Assuming it's a false alarm without checking has killed people.",
+        "deep_dive": "Detector types:\n• Smoke detector (optical/ionisation) — installed in accommodation, ECR, cargo spaces\n• Heat detector — fixed temperature or rate-of-rise, used in galleys and engine room\n• Flame detector — infrared/UV, detects actual flame, used in machinery spaces\n• Multi-sensor — combines smoke and heat, reduces false alarms\n\nSystem components:\n• Control panel — shows zone alarms, faults, and system status\n• Detector loop — detectors wired in zones (typically 50 detectors per zone)\n• Alarm sounders — bells/sirens triggered automatically\n• Repeater panel — secondary panel in ECR or Captain's cabin\n\nFalse alarm causes: Cooking steam, welding fumes, dust, aerosol sprays near detectors.\n\nIMO requires: Weekly testing of one detector per zone on rotation. Results logged.",
+        "on_watch": "🚨 FIRE ALARM RIGHT NOW?\n\n1. Note zone number on panel — do NOT silence yet\n2. Send crew to investigate EVERY space in that zone\n3. If confirmed fire → sound general alarm, inform Master, initiate muster\n4. If false alarm confirmed → silence alarm, log cause, reset detector\n5. Panel shows fault (not alarm) → report to ETO, check detector loop\n6. Multiple zones alarming simultaneously → treat as real fire\n\nFire control plan location: _____\nZone map location: _____"
+      }
+    },
+    {
+      "id": "co2_system",
+      "title": "CO₂ Fixed Fire System",
+      "subtitle": "Fixed CO₂ Gas Firefighting System",
+      "category": "safety",
+      "roles": [
+        "oow",
+        "chief_officer",
+        "captain",
+        "junior_engineer",
+        "chief_engineer"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "A fixed firefighting system that floods a protected space with CO₂ gas to extinguish fire by removing oxygen.\n\nIt works. But CO₂ is also lethal to humans — it displaces the oxygen needed to breathe. Releasing CO₂ into an occupied space kills everyone inside.\n\n⚠️ Most confusing part: The two-step release. There's a pilot cylinder valve and a main bank valve — both must be operated in sequence. Activating only one does nothing. Panic and skipping a step means the system doesn't discharge and the fire keeps burning.",
+        "deep_dive": "System components:\n• CO₂ cylinders — stored in the CO₂ room, usually 45kg each\n• Pilot cylinder — small cylinder that opens the main bank valve\n• Distribution manifold — routes gas to selected protected space\n• Release cabinet — two-step controls with safety pins/covers\n• Pre-discharge alarm — 20–30 second warning (time to evacuate)\n• Ventilation shutdown — ventilation must be stopped before discharge\n\nRelease procedure (general — follow ship's specific SMS):\n1. Confirm space is evacuated — headcount\n2. Stop ventilation to space\n3. Close all fire dampers\n4. Sound alarm\n5. Remove safety pin from pilot valve\n6. Open pilot valve\n7. Open main bank valve\n\nAfter discharge: Do NOT re-enter without breathing apparatus. CO₂ is invisible and odourless.",
+        "on_watch": "🚨 CO₂ SYSTEM SITUATION RIGHT NOW?\n\n1. Engine room fire, CO₂ needed → confirm ALL personnel out before release\n2. Headcount not complete → do NOT release until confirmed\n3. Accidental alarm/release signal → sound emergency, evacuate space immediately\n4. After release → no entry without SCBA, maintain boundary cooling\n5. CO₂ room door open with no reason → investigate, report to Master\n\nCO₂ room location: _____\nEngine room cylinder count: _____\nEvacuation muster point: _____"
+      }
     }
-  },
-  {
-    "id": "autopilot",
-    "title": "Autopilot",
-    "subtitle": "Automatic Steering System",
-    "category": "navigation",
-    "roles": ["deck_cadet", "oow", "chief_officer", "captain"],
-    "readTime": 3,
-    "content": {
-      "quick_look": "An electronic system that automatically steers the ship on a set course by continuously adjusting the rudder — so the officer of the watch isn't manually steering for hours at sea.\n\nIt takes heading input from the gyrocompass and rudder feedback from the steering gear to hold the course.\n\n⚠️ Most confusing part: Autopilot is not a watchkeeper. COLREGS still require a proper lookout. Ships have struck objects while on autopilot because the officer assumed the system was handling everything. It's steering — not thinking.",
-      "deep_dive": "Autopilot modes:\n• Heading control — maintains a fixed compass course\n• Track control — follows a route programmed in ECDIS (requires interface)\n• Auto/adaptive — adjusts sensitivity to sea conditions automatically\n\nKey settings:\n• Weather/rudder gain — how aggressively the rudder corrects\n• Counter rudder — anticipatory correction before overshoot\n• Yaw — acceptable deviation band before rudder activates\n\nHigh gain = frequent small corrections (calm weather)\nLow gain = fewer large corrections (rough weather, saves rudder wear)\n\nHandover protocol:\n• Disengage autopilot before entering TSS, port approaches, or restricted visibility\n• Officer must be at helm before disengaging\n• Check steering mode matches conditions before every watch",
-      "on_watch": "🚨 AUTOPILOT ISSUE RIGHT NOW?\n\n1. Ship not holding course → check gain settings, sea conditions may need adjustment\n2. Large course deviation alarm → take manual control immediately\n3. Autopilot disengaged unexpectedly → take helm manually, check system fault\n4. Track control deviation → verify ECDIS route is correct, switch to heading control\n5. Approaching confined water → disengage to manual steering well in advance\n\nMinimum advance notice before manual takeover: _____ minutes\nAltitude to switch to hand steering: _____"
-    }
-  },
-  {
-    "id": "echo_sounder",
-    "title": "Echo Sounder",
-    "subtitle": "Depth Measurement System",
-    "category": "navigation",
-    "roles": ["deck_cadet", "oow", "chief_officer", "captain"],
-    "readTime": 2,
-    "content": {
-      "quick_look": "Measures water depth by sending an acoustic pulse downward and timing the echo from the seabed. Displayed as depth below keel or depth below transducer.\n\nCritical in shallow water, port approaches, and anchoring operations.\n\n⚠️ Most confusing part: Depth below transducer vs. depth below keel. The transducer is not at the keel — it's mounted higher. If you read 5m on the display and your draught is 6m, you're already aground. Always confirm which measurement the display is showing.",
-      "deep_dive": "How it works: Transducer mounted on the hull sends a 200 kHz (shallow) or 50 kHz (deep) pulse. Sound travels at ~1500 m/s in seawater. Return time ÷ 2 = distance to seabed.\n\nKey settings:\n• Draft offset — set correctly so display shows clearance under keel\n• Range — auto or manual, adjust for shallow/deep water\n• Alarm depth — triggers when depth drops below threshold\n\nFactors affecting accuracy:\n• Water temperature and salinity (changes sound speed)\n• Aeration and bubbles under hull (causes false shallow readings)\n• Rocky or hard seabeds return strong echoes; mud returns weak ones\n• Multiple returns in shallow water can cause false readings\n\nDual frequency: 200 kHz for shallow/accurate, 50 kHz for deep water penetration.",
-      "on_watch": "🚨 ECHO SOUNDER ISSUE RIGHT NOW?\n\n1. Shallow alarm → verify against chart depth, check draft, inform Master\n2. No depth reading → check transducer for air bubbles, try alternate frequency\n3. Erratic readings → vessel speed causing aeration, reduce speed\n4. Depth shallowing rapidly → emergency stations, reduce speed immediately\n5. Anchoring → monitor continuously, note holding ground type from chart\n\nSafe under-keel clearance: _____ m\nDraft offset setting: _____ m"
-    }
-  },
-  {
-    "id": "speed_log",
-    "title": "Speed Log",
-    "subtitle": "Ship Speed and Distance Measurement",
-    "category": "navigation",
-    "roles": ["deck_cadet", "oow", "chief_officer", "captain"],
-    "readTime": 2,
-    "content": {
-      "quick_look": "Measures the ship's speed and distance travelled. Most modern ships use an electromagnetic or Doppler log. Speed data feeds into ECDIS for dead reckoning when GPS is unavailable.\n\n⚠️ Most confusing part: Speed through water vs. speed over ground. The log measures speed through water — it doesn't account for current. A 2-knot current against you means your SOG (from GPS) is 2 knots less than your log speed. Dead reckoning using log speed alone in strong currents will put you in the wrong position.",
-      "deep_dive": "Types of speed logs:\n• Electromagnetic log — uses the principle of electromagnetic induction. A probe extends below the keel and detects water flow. Accurate in shallow and deep water.\n• Doppler log — sends acoustic beams to the seabed or water layer. Gives speed over ground (in bottom-track mode) or speed through water (water-track mode).\n• GPS-derived SOG — not a true log, but used as reference on modern ships.\n\nKey outputs:\n• STW — Speed Through Water (log speed)\n• SOG — Speed Over Ground (GPS)\n• Distance log — cumulative nautical miles, used for voyage records\n\nLog error: Biofouling on the sensor probe causes underreading. Clean regularly in dry dock.",
-      "on_watch": "🚨 SPEED LOG ISSUE RIGHT NOW?\n\n1. Log reading zero → check probe is extended, check fouling\n2. Log and GPS SOG differ significantly → check for current, strong tidal stream\n3. Log failure at sea → use GPS SOG for navigation, note in logbook\n4. Dead reckoning needed (GPS failure) → use last known log speed and heading\n5. Entering port/shallow water → switch to Doppler bottom-track if available\n\nLog type on this ship: _____\nKnown log error: _____ %"
-    }
-  },
-  {
-    "id": "vhf_radio",
-    "title": "VHF Radio",
-    "subtitle": "Very High Frequency Marine Radio",
-    "category": "communication",
-    "roles": ["deck_cadet", "oow", "chief_officer", "captain", "rating"],
-    "readTime": 3,
-    "content": {
-      "quick_look": "The primary voice communication tool on the bridge. Used for ship-to-ship, ship-to-shore, and port communications. Range is roughly line-of-sight — 20 to 50 nautical miles depending on antenna height.\n\nChannel 16 is the international distress, safety, and calling channel. It must be monitored at all times when at sea.\n\n⚠️ Most confusing part: Channel discipline. Pilots, port control, and other ships all use different working channels. New officers call on the wrong channel or forget to switch back to Ch16 after a working channel conversation. Always return to Ch16.",
-      "deep_dive": "Key VHF channels:\n• Ch16 — distress, safety, calling (always monitored)\n• Ch13 — bridge-to-bridge navigation safety\n• Ch70 — DSC (Digital Selective Calling) — digital only, no voice\n• Ch12, 14 — port operations (varies by port)\n• Ch06 — intership working channel\n• Ch77 — intership (no port operations)\n\nDSC (Ch70) sends automated digital alerts including your MMSI, position, and distress type — without speaking.\n\nRadio checks:\n• Must be done at start of every watch\n• Log time, channel, and response in radio log\n\nGMDSS operators must hold a GMDSS certificate (GOC or ROC) to operate distress communications officially.\n\nOutput power: High (25W) for ship-to-shore, Low (1W) for short-range intership.",
-      "on_watch": "🚨 VHF ISSUE RIGHT NOW?\n\n1. No response on Ch16 → check squelch, check antenna connection, try handheld\n2. Hearing distress call on Ch16 → listen, do not transmit unless you can assist, log it\n3. Missed pilot call → try Ch16 then agreed working channel, check port information\n4. Need to make distress call → 'MAYDAY MAYDAY MAYDAY, this is [name] [MMSI] [position] [situation] [POB], OVER'\n5. Radio completely dead → use GMDSS handheld VHF from emergency equipment\n\nPilot channel for this port: _____\nPort control channel: _____"
-    }
-  },
-  {
-    "id": "oily_water_separator",
-    "title": "Oily Water Separator",
-    "subtitle": "Bilge Water Treatment System",
-    "category": "engine",
-    "roles": ["engine_cadet", "junior_engineer", "chief_engineer", "oow", "chief_officer"],
-    "readTime": 3,
-    "content": {
-      "quick_look": "Separates oil from bilge water so only clean water (below 15 ppm oil content) is discharged overboard. Required by MARPOL Annex I.\n\nEvery discharge must be logged in the Oil Record Book with position, volume, and OWS reading.\n\n⚠️ Most confusing part: The magic pipe. Some crews bypass the OWS by discharging oily bilge directly overboard through an illegal bypass pipe. This is a criminal offence. Port state control uses fluorescence testing and Oil Record Book audits to detect it. Officers have gone to prison for this.",
-      "deep_dive": "How it works (two-stage):\n\nStage 1 — Gravity separation: Oil rises because it's less dense than water. Large droplets separate in the coalescer chamber.\n\nStage 2 — Fine separation: Remaining emulsified oil passes through coalescing filter media that combines tiny droplets into larger ones that float up.\n\n15 ppm bilge alarm: Optical sensor monitors the output. If oil content exceeds 15 ppm, the overboard valve closes automatically and water is recirculated.\n\nMARPOL requirements:\n• Discharge only when underway, >12nm from nearest land\n• Oil content <15 ppm confirmed by approved monitoring equipment\n• All operations logged in Oil Record Book Part I\n• No discharge in special areas (Baltic, Mediterranean, etc.)\n\nSludge from OWS must be incinerated or landed ashore.",
-      "on_watch": "🚨 OWS ISSUE RIGHT NOW?\n\n1. 15ppm alarm → overboard valve should auto-close, verify it did\n2. OWS not reaching 15ppm → check filter element condition, replace if needed\n3. Entering special area with full bilge → do NOT discharge, transfer to slop tank\n4. Port inspection of Oil Record Book → every entry must match bilge pump logs\n5. OWS bypassed by previous crew → report to Master and Chief Engineer immediately\n\nSlop tank capacity: _____ m³\nOil Record Book location: _____"
-    }
-  },
-  {
-    "id": "marine_boiler",
-    "title": "Marine Boiler",
-    "subtitle": "Steam Generation System",
-    "category": "engine",
-    "roles": ["engine_cadet", "junior_engineer", "chief_engineer"],
-    "readTime": 3,
-    "content": {
-      "quick_look": "Generates steam used for heating fuel oil, cargo, accommodation, and sometimes driving turbines. On tankers especially, the boiler is critical — heavy crude cargo must be heated to flow.\n\n⚠️ Most confusing part: Low water level is a boiler emergency, not just an alarm. If the heating element or furnace is exposed without water, it overheats and can rupture. A boiler explosion is one of the most catastrophic events in the engine room.",
-      "deep_dive": "Types of marine boilers:\n• Auxiliary boiler — oil-fired, used for steam services (fuel heating, accommodation)\n• Exhaust gas boiler / economiser — uses heat from main engine exhaust gases. Free steam when main engine is running.\n• Composite boiler — both oil-fired and exhaust gas, automatically switches\n\nKey components:\n• Burner — atomises fuel oil and ignites it\n• Furnace — combustion chamber\n• Steam drum — collects and stores steam\n• Water drum — collects feedwater\n• Safety valves — lift automatically if steam pressure exceeds maximum\n• Gauge glass — direct visual water level indicator\n\nAlarm hierarchy:\n• Low water level warning → check feedwater pump\n• Low-low water level → automatic burner shutdown\n• High pressure → safety valve lifts automatically\n\nBoiler water treatment: Chemical dosing prevents scale and corrosion. Test daily.",
-      "on_watch": "🚨 BOILER ALARM RIGHT NOW?\n\n1. Low water level alarm → check gauge glass directly, do NOT trust display alone\n2. Feedwater pump failure → start standby pump immediately\n3. Low-low level (burner shutdown) → do NOT relight until water level is confirmed normal\n4. Safety valve lifting → steam pressure too high, reduce firing rate\n5. Flame failure alarm → check fuel supply, purge and relight following procedure\n6. Boiler making unusual noise → inform Chief Engineer, reduce firing rate\n\nNormal working pressure: _____ bar\nSafety valve lift pressure: _____ bar"
-    }
-  },
-  {
-    "id": "sewage_treatment",
-    "title": "Sewage Treatment Plant",
-    "subtitle": "Marine Sewage Treatment System",
-    "category": "environment",
-    "roles": ["engine_cadet", "junior_engineer", "chief_engineer", "oow", "chief_officer"],
-    "readTime": 2,
-    "content": {
-      "quick_look": "Treats sewage onboard so it can be legally discharged without polluting the sea. Required under MARPOL Annex IV.\n\nDischarge of untreated sewage within 3nm of land is prohibited. Between 3–12nm, discharge is only allowed if the ship is underway and the plant is approved.\n\n⚠️ Most confusing part: Many seafarers assume sewage doesn't matter compared to oil. PSC inspectors disagree — and the Sewage Record Book gets checked. Missing or inconsistent entries are an instant deficiency.",
-      "deep_dive": "Most common type: Biological treatment plant (activated sludge process)\n\nThree stages:\n1. Aeration chamber — bacteria break down organic waste using dissolved oxygen\n2. Settlement chamber — treated solids settle out (sludge)\n3. Chlorination/disinfection — chlorine tablets or UV kill remaining bacteria before discharge\n\nKey parameters to monitor:\n• Dissolved oxygen in aeration tank — bacteria need air to live\n• Chlorine residual in discharge — must be within limits\n• Sludge level — excess sludge must be removed\n\nDischarge standards (MARPOL Annex IV):\n• Coliform bacteria < 250 cfu/100ml\n• Suspended solids < 35 mg/L\n• BOD5 < 25 mg/L\n\nSpecial areas (Baltic Sea): Zero sewage discharge unless plant has special certification.",
-      "on_watch": "🚨 SEWAGE PLANT ISSUE RIGHT NOW?\n\n1. Alarm on panel → check which stage is faulting, refer to manual\n2. Overboard discharge in restricted area → stop discharge immediately, hold in tank\n3. Foul smell from plant room → check aeration blower, bacteria may be dying\n4. Entering Baltic or special area → switch to holding tank mode\n5. PSC inspection → Sewage Record Book must show all discharge positions logged\n\nHolding tank capacity: _____ m³\nSewage Record Book location: _____"
-    }
-  },
-  {
-    "id": "fire_detection",
-    "title": "Fire Detection System",
-    "subtitle": "Fixed Fire Detection and Alarm System",
-    "category": "safety",
-    "roles": ["deck_cadet", "oow", "chief_officer", "captain", "engine_cadet", "junior_engineer", "chief_engineer", "eto", "rating"],
-    "readTime": 3,
-    "content": {
-      "quick_look": "A network of detectors throughout the ship that identifies fire automatically and triggers an alarm at the central control panel — usually on the bridge or fire control station.\n\nSOLAS requires fixed fire detection on all passenger ships and most cargo ships above 500 GT.\n\n⚠️ Most confusing part: A zone alarm doesn't tell you exactly where the fire is — it tells you which zone. Each zone covers multiple compartments. You still have to physically investigate every space in that zone. Assuming it's a false alarm without checking has killed people.",
-      "deep_dive": "Detector types:\n• Smoke detector (optical/ionisation) — most common, installed in accommodation, ECR, cargo spaces\n• Heat detector — fixed temperature or rate-of-rise, used in galleys and engine room\n• Flame detector — infrared/UV, detects actual flame, used in machinery spaces\n• Multi-sensor — combines smoke and heat, reduces false alarms\n\nSystem components:\n• Control panel — shows zone alarms, faults, and system status\n• Detector loop — detectors wired in zones (typically 50 detectors per zone)\n• Alarm sounders — bells/sirens triggered automatically\n• Repeater panel — secondary panel in ECR or Captain's cabin\n\nFalse alarm causes: Cooking steam, welding fumes, dust, aerosol sprays near detectors.\n\nIMO requires: Weekly testing of one detector per zone on rotation. Results logged.",
-      "on_watch": "🚨 FIRE ALARM RIGHT NOW?\n\n1. Note zone number on panel — do NOT silence yet\n2. Send crew to investigate EVERY space in that zone\n3. If confirmed fire → sound general alarm, inform Master, initiate muster\n4. If false alarm confirmed → silence alarm, log cause, reset detector\n5. Panel shows fault (not alarm) → report to ETO, check detector loop\n6. Multiple zones alarming simultaneously → possible real fire or panel fault, treat as real\n\nFire control plan location: _____\nZone map location: _____"
-    }
-  },
-  {
-    "id": "co2_system",
-    "title": "CO₂ Fixed Fire System",
-    "subtitle": "Fixed CO₂ Gas Firefighting System",
-    "category": "safety",
-    "roles": ["oow", "chief_officer", "captain", "junior_engineer", "chief_engineer"],
-    "readTime": 3,
-    "content": {
-      "quick_look": "A fixed firefighting system that floods a protected space (engine room, cargo hold, paint store) with CO₂ gas to extinguish fire by removing oxygen.\n\nIt works. But CO₂ is also lethal to humans — it displaces the oxygen needed to breathe. Releasing CO₂ into an occupied space kills everyone inside.\n\n⚠️ Most confusing part: The two-step release. There's a pilot cylinder valve and a main bank valve — both must be operated in sequence. Activating only one does nothing. Panic and skipping a step means the system doesn't discharge, and the fire keeps burning.",
-      "deep_dive": "System components:\n• CO₂ cylinders — stored in the CO₂ room, usually 45kg each\n• Pilot cylinder — small cylinder that opens the main bank valve\n• Distribution manifold — routes gas to selected protected space\n• Release cabinet — two-step controls with safety pins/covers\n• Alarm — 20–30 second pre-discharge alarm (time to evacuate)\n• Ventilation shutdown — ventilation must be stopped before discharge to prevent dilution\n\nProtected spaces: Engine room, cargo pump room, cargo holds, paint store, incinerator room\n\nRelease procedure (general — follow ship's specific SMS):\n1. Confirm space is evacuated — headcount\n2. Stop ventilation to space\n3. Close all fire dampers\n4. Sound alarm\n5. Remove safety pin from pilot valve\n6. Open pilot valve\n7. Open main bank valve\n\nAfter discharge: Do NOT re-enter without breathing apparatus. CO₂ is invisible and odourless.",
-      "on_watch": "🚨 CO₂ SYSTEM SITUATION RIGHT NOW?\n\n1. Engine room fire, CO₂ needed → confirm ALL personnel out before release\n2. Headcount not complete → do NOT release until confirmed\n3. Accidental alarm/release signal → sound emergency, evacuate space immediately\n4. After release → no entry without SCBA, maintain boundary cooling\n5. CO₂ room door open with no reason → investigate, report to Master\n\nCO₂ room location: _____\nEngine room cylinder count: _____\nEvacuation muster point: _____"
-    }
-  }
   ]
 }
