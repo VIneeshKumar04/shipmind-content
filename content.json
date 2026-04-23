@@ -51,6 +51,16 @@
       "how_it_works": "All systems are networked through a central processing unit. The officer can pull radar overlay onto the ECDIS chart, receive engine RPM feedback directly on the nav console, and initiate autopilot course changes from the same screen. Alarms from any connected system surface centrally so nothing gets missed.",
       "common_confusion": "Because everything looks connected, junior officers sometimes assume that changing a setting in one system automatically updates the others. It doesn't always. ECDIS and radar may share position data but have independent alarm settings. Always configure each system individually during familiarization.",
       "quick_tips": "1. During familiarization, trace the data flow — know what feeds what on your specific IBS brand. 2. If one system fails, understand which other systems lose data as a result. 3. IBS doesn't replace watchkeeping judgment — it supports it. 4. Learn the manual fallback for every function in case the network goes down."
-    }
+    },
+    {
+  "id": "vdr",
+  "title": "VDR",
+  "category": "Navigation",
+  "what_is_it": "VDR stands for Voyage Data Recorder. It's the ship's equivalent of an aircraft black box — it continuously records bridge audio, radar images, GPS position, speed, heading, and key sensor data from all ship systems.",
+  "why_it_exists": "When a maritime accident happens — a collision, grounding, or sinking — investigators need to understand exactly what occurred and why. The VDR captures everything happening on the bridge in the hours leading up to an incident, giving accident investigators hard evidence instead of conflicting crew testimonies.",
+  "how_it_works": "The VDR collects data from connected systems every second and stores it in a protective capsule designed to survive fire, pressure, and impact. It keeps a rolling 12-hour loop — older data is overwritten unless the system is manually triggered to save. A simplified version called S-VDR (Simplified VDR) is required on older or smaller vessels.",
+  "common_confusion": "Many crew members don't realize that bridge conversations are being recorded at all times. Everything said on the bridge — including casual remarks — is captured by the VDR microphones. Also, the protective capsule is not the whole unit. The capsule is just where the final compressed data is stored for crash survival.",
+  "quick_tips": "1. Know where the VDR capsule is located on your ship — orange, cylindrical, usually mounted externally. 2. Never interfere with or attempt to reset the VDR after an incident — that's a serious legal offence. 3. Annual performance tests are required — check if yours is due. 4. Speak professionally on the bridge at all times — the microphone is always on."
+}
   ]
 }
