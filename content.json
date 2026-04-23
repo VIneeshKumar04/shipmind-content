@@ -1,66 +1,196 @@
 {
-  "version": 1,
-  "last_updated": "2026-04-23",
+  "version": 2,
   "topics": [
     {
       "id": "ecdis",
       "title": "ECDIS",
-      "category": "Navigation",
-      "what_is_it": "ECDIS stands for Electronic Chart Display and Information System. It's the digital chart table that replaced paper charts on most commercial vessels since 2012. Think of it as Google Maps for ships — but with legal consequences if you get it wrong.",
-      "why_it_exists": "Ships used to navigate using paper charts, which had to be updated manually with corrections every week. ECDIS replaced that with real-time digital charts that integrate GPS, AIS, and radar — giving officers a live picture of the ship's position at all times.",
-      "how_it_works": "ECDIS pulls your GPS position and overlays it on an electronic navigational chart (ENC). It continuously monitors your route, depth under keel, and nearby hazards. If you're heading toward shallow water or a traffic separation zone, it sounds an alarm.",
-      "common_confusion": "Most junior officers panic when alarms start going off and they don't know which setting triggered it. ECDIS has dozens of alarm parameters — safety contour, anti-grounding cone, cross-track error — and each brand (Furuno, JRC, Transas) has a different interface.",
-      "quick_tips": "1. Learn your ship's specific ECDIS brand during familiarization — don't assume it works like the simulator. 2. Never silence an alarm you don't understand. 3. Always cross-check ECDIS position with radar and visual bearings. 4. Make sure ENCs are up to date before departure."
-    },
-    {
-      "id": "gmdss",
-      "title": "GMDSS",
-      "category": "Communication",
-      "what_is_it": "GMDSS stands for Global Maritime Distress and Safety System. It's the worldwide communication network that ensures a ship in distress can always send and receive emergency signals — no matter where in the ocean they are.",
-      "why_it_exists": "Before GMDSS, distress communication depended on a radio operator being awake and on duty. Ships have sunk because no one heard the SOS in time. GMDSS automates distress alerting so that a single button press notifies rescue services and nearby ships simultaneously.",
-      "how_it_works": "GMDSS uses a combination of equipment depending on the sea area (A1, A2, A3, A4). This includes DSC (Digital Selective Calling) on VHF/MF/HF radios, EPIRB (Emergency Position Indicating Radio Beacon), SART (Search and Rescue Transponder), Inmarsat satellite terminals, and NAVTEX for automated safety broadcasts.",
-      "common_confusion": "People mix up the equipment and which sea area requires what. Also, the DSC controller on VHF radio is often ignored during normal operations — then in an emergency nobody knows how to send a distress alert properly.",
-      "quick_tips": "1. Know where every piece of GMDSS equipment is on your ship before you need it. 2. The red distress button on VHF DSC is covered for a reason — lift the cover, hold for 5 seconds. 3. EPIRB should be checked monthly — look at the indicator light and hydrostatic release condition. 4. NAVTEX runs automatically — check it daily for weather and navigational warnings in your area."
+      "subtitle": "Electronic Chart Display and Information System",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "A digital navigation system that replaces paper charts. It shows the ship's real-time position on an electronic chart using GPS data.\n\nIMO made it mandatory because it reduces navigational errors, integrates multiple data sources (AIS, radar, depth), and updates charts digitally instead of manually correcting paper ones.\n\n⚠️ Most confusing part: The difference between raster charts (scanned paper charts) and vector charts (true ENCs). Only vector ENCs count as official chart folio under SOLAS. Using raster charts without paper backup means you're non-compliant.",
+        "deep_dive": "ECDIS works by feeding GPS position into the system, which overlays it onto official Electronic Nautical Charts (ENCs). It constantly checks your route against safety parameters — shallow water, traffic separation schemes, restricted zones — and triggers alarms when approaching danger.\n\nTwo chart types exist:\n• Vector ENCs (S-57 format) — official, layered data, objects have attributes\n• Raster charts — essentially scanned paper, no intelligent data layer\n\nOnly vector ENCs satisfy SOLAS requirements as the primary means of navigation.\n\nECDIS alarms:\n• Alarm — requires immediate action\n• Warning — requires attention\n• Caution — awareness only\n\nNever disable or bypass alarms without proper logging and senior officer authorization. Every alarm dismissal is recorded by the VDR.",
+        "on_watch": "🚨 ECDIS ALARM RIGHT NOW?\n\n1. DON'T dismiss it immediately — read what it says\n2. Check alarm type: Anti-grounding? Cross-track? AIS conflict?\n3. Anti-grounding alarm → check chart scale, zoom in, verify position against radar\n4. System frozen → switch to backup ECDIS immediately, inform Master\n5. Chart outdated warning → note in logbook, continue with caution\n\nBackup paper charts location: _____ (fill in your ship)"
+      }
     },
     {
       "id": "ais",
       "title": "AIS",
-      "category": "Navigation",
-      "what_is_it": "AIS stands for Automatic Identification System. It's a transponder system that broadcasts your ship's identity, position, speed, and course to every other vessel and shore station within range — and receives the same data from them.",
-      "why_it_exists": "Radar can see a target but can't tell you who it is, where it's going, or how fast. AIS fills that gap. It was introduced to reduce collisions, especially in busy traffic lanes, ports, and restricted visibility.",
-      "how_it_works": "Your AIS unit continuously transmits a VHF signal containing your MMSI number, ship name, position, COG, SOG, heading, and destination. Other ships receive this and display it as a labelled target on ECDIS or a dedicated AIS display. Class A AIS (required on SOLAS vessels) updates every 2–10 seconds when underway.",
-      "common_confusion": "AIS is not a collision avoidance system. It's an information tool. Junior officers sometimes trust AIS targets over radar — this is dangerous. AIS can be switched off, misconfigured, or broadcasting wrong data. Always use radar as your primary collision avoidance tool.",
-      "quick_tips": "1. Check your own AIS data regularly — wrong ship length or draught input causes confusion for other vessels. 2. If a target disappears from AIS but is still on radar, don't assume it's safe — they may have switched AIS off. 3. In port, AIS helps you identify anchored vessels in the dark. 4. MMSI is your ship's unique ID — know it."
+      "subtitle": "Automatic Identification System",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "A transponder system that continuously broadcasts your ship's identity, position, speed, and course — and receives the same from nearby vessels.\n\nMandatory under SOLAS for vessels above 300 GT.\n\n⚠️ Most confusing part: AIS is NOT a collision avoidance system. Fishing boats, small craft, and military vessels often have AIS switched off. If you only watch AIS, you're blind to them.",
+        "deep_dive": "Class A AIS transmits position every 2–10 seconds when moving, every 3 minutes at anchor.\n\nAIS data includes:\n• MMSI (unique vessel ID)\n• Position, COG, SOG, heading\n• Vessel name, type, dimensions\n• Destination and ETA\n• Navigation status\n\nClass A vs Class B:\n• Class A — mandatory for SOLAS vessels\n• Class B — used on smaller vessels, lower transmit power\n\nAIS can be manipulated or spoofed — never trust AIS without radar confirmation for collision avoidance decisions.",
+        "on_watch": "🚨 AIS ISSUE RIGHT NOW?\n\n1. Target disappeared from AIS → check on radar immediately, it's still there\n2. Your AIS not transmitting → check VHF antenna, reboot transponder\n3. AIS and radar don't match → trust radar, investigate AIS\n4. Dangerous target with no AIS → treat as real vessel, apply COLREGS\n\nYour MMSI: _____ (fill in your ship)"
+      }
     },
     {
-      "id": "ballast-water-treatment",
-      "title": "Ballast Water Treatment",
-      "category": "Engine Room",
-      "what_is_it": "Ballast Water Treatment (BWT) systems clean the water taken into a ship's ballast tanks before it's discharged in a different ocean. The goal is to stop invasive marine species from hitchhiking between ecosystems inside ballast water.",
-      "why_it_exists": "Ships take in millions of litres of seawater as ballast to maintain stability when carrying no cargo. That water contains plankton, larvae, and bacteria from the local sea. When discharged at the destination port, these organisms can devastate local marine environments. The IMO's Ballast Water Management Convention made treatment systems mandatory.",
-      "how_it_works": "Most systems use two stages: filtration (removing large organisms and sediment) followed by either UV irradiation or electrochlorination (killing remaining microorganisms). The treated water must meet D-2 standards — essentially near-zero live organisms of a certain size per cubic metre.",
-      "common_confusion": "Ratings often don't know when the system should be running or how to log its operation correctly. Port State Control inspectors check ballast water records closely — incorrect or missing log entries can get a ship detained even if the system worked perfectly.",
-      "quick_tips": "1. Always record ballast operations in the Ballast Water Record Book — time, position, volume, system status. 2. Check filter differential pressure regularly — a clogged filter means the UV stage isn't getting clean water. 3. UV lamp hours matter — know when your lamps are due for replacement. 4. Some ports have additional local requirements beyond IMO D-2 — check before arrival."
+      "id": "vdr",
+      "title": "VDR",
+      "subtitle": "Voyage Data Recorder",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain",
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer",
+        "eto",
+        "rating"
+      ],
+      "readTime": 2,
+      "content": {
+        "quick_look": "The ship's black box. Records bridge audio, radar images, navigational data, and ship parameters on a rolling 12-hour loop.\n\n⚠️ Most confusing part: Everything you say on the bridge is recorded. Every alarm you dismiss is logged. Dismissing an alarm you didn't understand becomes evidence of negligence in an investigation.",
+        "deep_dive": "The VDR records:\n• Bridge audio\n• Radar video images\n• ECDIS display\n• AIS data\n• Speed, heading, position\n• Engine orders and responses\n• All alarms — every trigger and acknowledgement\n\nData stored in a protective capsule surviving fire (1000°C / 1hr), sinking (6000m / 30 days), and impact.\n\nThe capsule has a ULB (Underwater Locator Beacon) that pings at 37.5 kHz for 30 days.",
+        "on_watch": "🚨 VDR ISSUE RIGHT NOW?\n\n1. VDR alarm/malfunction → report to Master and Chief Officer immediately\n2. Sailing without working VDR → Port State Control deficiency, log it\n3. After an incident → do NOT tamper with VDR\n\nVDR capsule location: _____\nULB battery expiry: _____"
+      }
     },
     {
-      "id": "integrated-bridge-system",
-      "title": "Integrated Bridge System",
-      "category": "Navigation",
-      "what_is_it": "An Integrated Bridge System (IBS) connects all navigation and ship control equipment — ECDIS, radar, autopilot, engine controls, AIS, GMDSS — into a single unified workstation. Instead of separate screens and panels, the officer works from one or two consoles that show everything.",
-      "why_it_exists": "Modern ships generate enormous amounts of data from dozens of systems. Without integration, an officer would have to physically walk between different panels to get a complete picture. IBS brings it all together, reduces workload, and cuts human error — especially during critical manoeuvres like port entry.",
-      "how_it_works": "All systems are networked through a central processing unit. The officer can pull radar overlay onto the ECDIS chart, receive engine RPM feedback directly on the nav console, and initiate autopilot course changes from the same screen. Alarms from any connected system surface centrally so nothing gets missed.",
-      "common_confusion": "Because everything looks connected, junior officers sometimes assume that changing a setting in one system automatically updates the others. It doesn't always. ECDIS and radar may share position data but have independent alarm settings. Always configure each system individually during familiarization.",
-      "quick_tips": "1. During familiarization, trace the data flow — know what feeds what on your specific IBS brand. 2. If one system fails, understand which other systems lose data as a result. 3. IBS doesn't replace watchkeeping judgment — it supports it. 4. Learn the manual fallback for every function in case the network goes down."
+      "id": "gmdss",
+      "title": "GMDSS",
+      "subtitle": "Global Maritime Distress and Safety System",
+      "category": "communication",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain",
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer",
+        "eto",
+        "rating"
+      ],
+      "readTime": 4,
+      "content": {
+        "quick_look": "A worldwide communication framework ensuring a ship in distress can send an alert and receive help — even with no crew interaction.\n\nIt's a system of equipment: DSC radio, EPIRB, SART, Navtex, and satellite comms.\n\n⚠️ Most confusing part: The EPIRB must be registered with your flag state. An unregistered EPIRB wastes rescue time — authorities can't identify your vessel.",
+        "deep_dive": "GMDSS components:\n• DSC — automated distress alerts on VHF Ch70, MF/HF\n• EPIRB — activates manually or via hydrostatic release. Transmits on 406 MHz to COSPAS-SARSAT. Must be registered.\n• SART — responds to 9 GHz radar pulses. Creates 12 dots on rescuer's radar.\n• Navtex — automated receiver for navigational warnings on 518 kHz\n• Inmarsat/Iridium — Satellite voice and data\n\nSea areas A1–A4 define which equipment is required.",
+        "on_watch": "🚨 DISTRESS SITUATION RIGHT NOW?\n\n1. DSC distress → press red button, hold 3 seconds, follow prompts\n2. VHF Ch16 MAYDAY → 'MAYDAY MAYDAY MAYDAY, this is [ship name] [MMSI] [position] [nature of distress] [persons on board] OVER'\n3. EPIRB → ensure float-free bracket released\n4. SART → hold at highest point, wait for radar response\n\nNEVER test DSC distress without alerting coast guard first."
+      }
     },
     {
-  "id": "vdr",
-  "title": "VDR",
-  "category": "Navigation",
-  "what_is_it": "VDR stands for Voyage Data Recorder. It's the ship's equivalent of an aircraft black box — it continuously records bridge audio, radar images, GPS position, speed, heading, and key sensor data from all ship systems.",
-  "why_it_exists": "When a maritime accident happens — a collision, grounding, or sinking — investigators need to understand exactly what occurred and why. The VDR captures everything happening on the bridge in the hours leading up to an incident, giving accident investigators hard evidence instead of conflicting crew testimonies.",
-  "how_it_works": "The VDR collects data from connected systems every second and stores it in a protective capsule designed to survive fire, pressure, and impact. It keeps a rolling 12-hour loop — older data is overwritten unless the system is manually triggered to save. A simplified version called S-VDR (Simplified VDR) is required on older or smaller vessels.",
-  "common_confusion": "Many crew members don't realize that bridge conversations are being recorded at all times. Everything said on the bridge — including casual remarks — is captured by the VDR microphones. Also, the protective capsule is not the whole unit. The capsule is just where the final compressed data is stored for crash survival.",
-  "quick_tips": "1. Know where the VDR capsule is located on your ship — orange, cylindrical, usually mounted externally. 2. Never interfere with or attempt to reset the VDR after an incident — that's a serious legal offence. 3. Annual performance tests are required — check if yours is due. 4. Speak professionally on the bridge at all times — the microphone is always on."
-}
+      "id": "ibs",
+      "title": "IBS",
+      "subtitle": "Integrated Bridge System",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "A unified control platform where navigation, communication, alarm management, and ship control systems are all connected through linked workstations.\n\n⚠️ Most confusing part: The illusion of control. An IBS looks clean and organised, so people assume everything is fine. But if one sensor is faulty, all connected displays show wrong data confidently.",
+        "deep_dive": "All bridge equipment communicates through NMEA 0183, NMEA 2000, or Ethernet-based networks.\n\nKey components:\n• Conning display — speed, heading, RPM, rudder angle in one view\n• AMS (Alarm Management System) — collects and prioritises alerts\n• BNWAS — detects officer incapacitation, escalates alarm\n• Autopilot — connected to ECDIS for track-following\n• Engine telegraph — electronic, logged automatically\n\nAlarm levels:\n• Alarm (red) — immediate action\n• Warning (yellow) — attention required\n• Caution (cyan) — awareness",
+        "on_watch": "🚨 IBS PROBLEM RIGHT NOW?\n\n1. Workstation frozen → switch to backup standalone instruments immediately\n2. Alarm panel overwhelmed → address highest priority (red) first, never mass-dismiss\n3. BNWAS alarm → reset immediately if you're operational\n4. Data mismatch IBS vs standalone → trust standalone\n5. Full reboot → inform Master, switch to manual watchkeeping\n\nStandalone backup instruments: _____"
+      }
+    },
+    {
+      "id": "bwts",
+      "title": "BWTS",
+      "subtitle": "Ballast Water Treatment System",
+      "category": "environment",
+      "roles": [
+        "oow",
+        "chief_officer",
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "Treats ballast water to kill invasive marine organisms before discharge in a different sea region. IMO Ballast Water Management Convention (2017) made it mandatory.\n\n⚠️ Most confusing part: The paperwork. Port state control checks your Ballast Water Record Book intensely. Every ballast operation must be logged with position, volume, and salinity. Missing entries = immediate deficiency.",
+        "deep_dive": "Most BWTS use a two-stage process:\n\n1. Filtration (40–50 micron) — removes larger organisms\n2. Treatment:\n   • UV radiation — damages DNA of organisms\n   • Electrochlorination — generates chlorine from seawater\n   • Chemical dosing — biocide injection\n\nDischarge must meet D-2 standard:\n• < 10 viable organisms per m³ (≥50 micrometers)\n• < 10 viable organisms per mL (10–50 micrometers)\n\nLog every uptake, treatment, and discharge.",
+        "on_watch": "🚨 BWTS ISSUE RIGHT NOW?\n\n1. UV lamp failure → check hours, log malfunction\n2. Pump rate exceeds treatment capacity → slow down ballast pump\n3. Entering port with untreated ballast → contact Master immediately\n4. Filter blocked → backflush procedure, check differential pressure\n5. Port inspection → Record Book must be complete\n\nYour system type: _____"
+      }
+    },
+    {
+      "id": "radar_arpa",
+      "title": "RADAR & ARPA",
+      "subtitle": "Automatic Radar Plotting Aid",
+      "category": "navigation",
+      "roles": [
+        "deck_cadet",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 4,
+      "content": {
+        "quick_look": "Radar detects objects using radio waves. ARPA tracks those objects and calculates Closest Point of Approach (CPA) and Time to CPA (TCPA) automatically.\n\n⚠️ Most confusing part: ARPA vectors are based on relative or true motion. In relative motion mode, a stationary buoy appears to move. Many near-misses have happened because an officer misread the motion mode.",
+        "deep_dive": "Radar bands:\n• X-band (9 GHz) — higher resolution, better for collision avoidance\n• S-band (3 GHz) — better in rain, longer range\n\nARPA data per target: true course, speed, CPA, TCPA, BCR, BCT\n\nVector modes:\n• True motion — stationary objects appear stationary\n• Relative motion — everything moves relative to own ship\n\nCPA/TCPA:\n• CPA < safe distance AND TCPA positive = action required\n• TCPA negative = target has passed CPA\n\nARPA struggles with targets in sea clutter and fast-changing targets.",
+        "on_watch": "🚨 RADAR/ARPA ISSUE RIGHT NOW?\n\n1. Target lost → manually check screen, re-acquire\n2. CPA alarm → verify motion mode first, then take COLREGS action\n3. Clutter obscuring targets → adjust carefully, don't over-suppress\n4. ARPA vector seems wrong → newly acquired target, wait 3+ minutes\n5. Radar frozen → reboot, switch to other radar as primary\n\nSafe CPA: _____ nm\nSafe TCPA: _____ min"
+      }
+    },
+    {
+      "id": "engine_auto",
+      "title": "Engine Automation",
+      "subtitle": "Electronic Engine Room Monitoring & Automation",
+      "category": "engine",
+      "roles": [
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer",
+        "eto"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "Monitors, logs, and sometimes controls machinery — temperatures, pressures, RPMs, flow rates — from a centralised interface in the ECR.\n\n⚠️ Most confusing part: Alert fatigue. Junior engineers start dismissing alarms without investigating — which is how small issues become catastrophic failures.",
+        "deep_dive": "Monitored parameters:\n• Main engine — RPM, exhaust temps per cylinder, turbocharger speed\n• Auxiliary engines — load, temperature, oil pressure\n• Boilers — steam pressure, water level\n• Tanks — levels and temperatures\n• Cooling — sea water and fresh water temps\n\nUMS (Unattended Machinery Space) requirements:\n• Critical alarms transfer to duty engineer's cabin\n• Dead man alarm — periodic acknowledgement required\n• Automatic slowdown/shutdown for critical parameters\n\nAlarm priorities:\n• Shutdown — automatic stop\n• Slowdown — automatic RPM reduction\n• Alarm — engineer attention required\n• Warning — pre-alarm",
+        "on_watch": "🚨 ENGINE ROOM ALARM RIGHT NOW?\n\n1. Main engine oil pressure alarm → check gauge directly, do NOT dismiss\n2. High exhaust temp single cylinder → check fuel injector, possible misfiring\n3. Cooling water high temp → check sea water pump, strainer blockage\n4. All alarms simultaneously → possible automation fault, check manually\n5. UMS alarm in cabin → get to ECR immediately\n\nNever silence an alarm you don't understand."
+      }
+    },
+    {
+      "id": "dp",
+      "title": "DP System",
+      "subtitle": "Dynamic Positioning System",
+      "category": "navigation",
+      "roles": [
+        "oow",
+        "chief_officer",
+        "captain",
+        "eto"
+      ],
+      "readTime": 4,
+      "content": {
+        "quick_look": "A computer-controlled system maintaining a vessel's position and heading using its own thrusters — without anchoring. Essential for offshore operations.\n\n⚠️ Most confusing part: DP classes. DP1, DP2, and DP3 define redundancy level. Using a DP1 vessel for a DP2 operation is a serious safety and contract violation.",
+        "deep_dive": "Position reference systems:\n• DGPS — more accurate than standard GPS\n• Acoustic positioning — hydrophones tracking seabed transponders\n• Taut wire — physical wire to seabed\n• Fanbeam/Cyscan — laser-based reference\n\nDP classes:\n• DP1 — no redundancy, loss of position possible after single fault\n• DP2 — single fault does not cause loss of position\n• DP3 — full redundancy including A60 fire divisions\n\nControl algorithm runs a Kalman filter — computing optimal thrust from noisy sensor data.",
+        "on_watch": "🚨 DP ALARM RIGHT NOW?\n\n1. Position reference lost → check if other references still valid\n2. Drive-off alarm → emergency stop thrusters, inform Master\n3. Weathervane mode → vessel aligns to environment, clear the area\n4. Any uncontrolled movement → report immediately, even with no damage\n5. Power failure → DP may lose capability, manual thruster control\n\nMinimum reference systems required: _____\nDP class required: _____"
+      }
+    },
+    {
+      "id": "scrubber",
+      "title": "Exhaust Scrubber",
+      "subtitle": "Exhaust Gas Cleaning System (EGCS)",
+      "category": "environment",
+      "roles": [
+        "junior_engineer",
+        "chief_engineer",
+        "oow",
+        "chief_officer"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "Removes sulfur oxides (SOₓ) from engine exhaust — allowing the ship to burn cheaper high-sulfur fuel while complying with IMO 2020 (0.5% global sulfur cap, 0.1% in ECAs).\n\n⚠️ Most confusing part: Open loop scrubbers are banned in many ports. Ships that forget to switch modes before entering a restricted zone face massive fines.",
+        "deep_dive": "Three types:\n• Open loop — uses seawater, discharges washwater overboard\n• Closed loop — recirculates treated water, stores residue onboard\n• Hybrid — can switch between both\n\nIMO compliant discharge limits:\n• pH ≥ 6.5 (at 4m from discharge)\n• PAH ≤ 50 μg/L\n• Turbidity ≤ 25 FNU above ambient\n\nProcess: seawater or NaOH sprayed into exhaust. SO₂ reacts to form sulfurous acid, which is neutralised. Treated washwater discharged or stored.",
+        "on_watch": "🚨 SCRUBBER ISSUE RIGHT NOW?\n\n1. Entering ECA or restricted port → switch to closed loop OR switch to compliant fuel\n2. Washwater pH alarm → check caustic dosing or seawater alkalinity\n3. High differential pressure → check nozzle blockage, soot accumulation\n4. Bypass valve opened → log with reason, seal afterward\n5. Port inspection → have scrubber data recorder printout ready\n\nYour scrubber type: _____"
+      }
+    }
   ]
 }
