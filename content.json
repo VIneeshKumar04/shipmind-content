@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "topics": [
     {
       "id": "ecdis",
@@ -152,7 +152,7 @@
       "readTime": 3,
       "content": {
         "quick_look": "Monitors, logs, and sometimes controls machinery — temperatures, pressures, RPMs, flow rates — from a centralised interface in the ECR.\n\n⚠️ Most confusing part: Alert fatigue. Junior engineers start dismissing alarms without investigating — which is how small issues become catastrophic failures.",
-        "deep_dive": "Monitored parameters:\n• Main engine — RPM, exhaust temps per cylinder, turbocharger speed\n• Auxiliary engines — load, temperature, oil pressure\n• Boilers — steam pressure, water level\n• Tanks — levels and temperatures\n• Cooling — sea water and fresh water temps\n\nUMS (Unattended Machinery Space) requirements:\n• Critical alarms transfer to duty engineer's cabin\n• Dead man alarm — periodic acknowledgement required\n• Automatic slowdown/shutdown for critical parameters\n\nAlarm priorities:\n• Shutdown — automatic stop\n• Slowdown — automatic RPM reduction\n• Alarm — engineer attention required\n• Warning — pre-alarm",
+        "deep_dive": "Monitored parameters:\n• Main engine — RPM, exhaust temps per cylinder, turbocharger speed\n• Auxiliary engines — load, temperature, oil pressure\n• Boilers — steam pressure, water level\n• Tanks — levels and temperatures\n• Cooling — sea water and fresh water temps\n\nUMS requirements:\n• Critical alarms transfer to duty engineer's cabin\n• Dead man alarm — periodic acknowledgement required\n• Automatic slowdown/shutdown for critical parameters\n\nAlarm priorities:\n• Shutdown — automatic stop\n• Slowdown — automatic RPM reduction\n• Alarm — engineer attention required\n• Warning — pre-alarm",
         "on_watch": "🚨 ENGINE ROOM ALARM RIGHT NOW?\n\n1. Main engine oil pressure alarm → check gauge directly, do NOT dismiss\n2. High exhaust temp single cylinder → check fuel injector, possible misfiring\n3. Cooling water high temp → check sea water pump, strainer blockage\n4. All alarms simultaneously → possible automation fault, check manually\n5. UMS alarm in cabin → get to ECR immediately\n\nNever silence an alarm you don't understand."
       }
     },
@@ -190,6 +190,26 @@
         "quick_look": "Removes sulfur oxides (SOₓ) from engine exhaust — allowing the ship to burn cheaper high-sulfur fuel while complying with IMO 2020 (0.5% global sulfur cap, 0.1% in ECAs).\n\n⚠️ Most confusing part: Open loop scrubbers are banned in many ports. Ships that forget to switch modes before entering a restricted zone face massive fines.",
         "deep_dive": "Three types:\n• Open loop — uses seawater, discharges washwater overboard\n• Closed loop — recirculates treated water, stores residue onboard\n• Hybrid — can switch between both\n\nIMO compliant discharge limits:\n• pH ≥ 6.5 (at 4m from discharge)\n• PAH ≤ 50 μg/L\n• Turbidity ≤ 25 FNU above ambient\n\nProcess: seawater or NaOH sprayed into exhaust. SO₂ reacts to form sulfurous acid, which is neutralised. Treated washwater discharged or stored.",
         "on_watch": "🚨 SCRUBBER ISSUE RIGHT NOW?\n\n1. Entering ECA or restricted port → switch to closed loop OR switch to compliant fuel\n2. Washwater pH alarm → check caustic dosing or seawater alkalinity\n3. High differential pressure → check nozzle blockage, soot accumulation\n4. Bypass valve opened → log with reason, seal afterward\n5. Port inspection → have scrubber data recorder printout ready\n\nYour scrubber type: _____"
+      }
+    },
+    {
+      "id": "steering_gear",
+      "title": "Steering Gear",
+      "subtitle": "Hydraulic Steering Gear System",
+      "category": "engine",
+      "roles": [
+        "engine_cadet",
+        "junior_engineer",
+        "chief_engineer",
+        "oow",
+        "chief_officer",
+        "captain"
+      ],
+      "readTime": 3,
+      "content": {
+        "quick_look": "The system that physically moves the rudder in response to helm commands from the bridge. On most commercial ships it's hydraulic — hydraulic fluid drives rams or rotary vanes connected directly to the rudder stock.\n\nSOLAS requires two independent power units, regular testing before entering port, and a direct communication system between bridge and steering gear room.\n\n⚠️ Most confusing part: The steering gear doesn't fail dramatically — it often fails gradually. Slow response, unusual noises, or hunting (rudder moving without command) are early warning signs most people ignore until it's too late.",
+        "deep_dive": "Two main types of hydraulic steering gear:\n\n• Ram type — two or four hydraulic rams push the tiller arm connected to the rudder stock. Most common on larger vessels.\n• Rotary vane type — hydraulic fluid acts on vanes inside a rotary actuator. More compact, used on smaller vessels.\n\nKey components:\n• Hydraulic power units (HPU) — pumps that pressurize the system. Minimum two required by SOLAS.\n• Tiller — arm connecting the rams to the rudder stock\n• Rudder stock — the shaft that physically turns the rudder\n• Hunting gear — feedback mechanism that stops the rudder when it reaches the ordered angle\n• Follow-up (FU) mode — rudder moves to and holds ordered angle\n• Non-follow-up (NFU) mode — rudder moves only while control is held, no auto-stop\n• Autopilot mode — rudder controlled automatically by autopilot system\n\nSOLAS requirements:\n• Steering gear test within 12 hours before departure\n• Emergency steering drill every 3 months\n• Direct communication (phone/intercom) between bridge and steering gear room\n• Auxiliary steering gear capable of 7° per second movement\n• Rudder angle indicator on bridge and at steering gear",
+        "on_watch": "🚨 STEERING GEAR ISSUE RIGHT NOW?\n\n1. No helm response → switch to second hydraulic power unit immediately\n2. Still no response → switch to NFU (Non-Follow-Up) control\n3. NFU not working → switch to emergency local steering in steering gear room, inform Master\n4. Rudder hunting (moving on its own) → disengage autopilot, switch to manual FU\n5. Hydraulic fluid leak → inform Chief Engineer, reduce speed, prepare for emergency\n6. Loss of steering in confined waters → anchoring may be required, sound appropriate signals\n\nEmergency steering position: _____ (know this before you need it)\nSteering gear room phone number: _____"
       }
     }
   ]
